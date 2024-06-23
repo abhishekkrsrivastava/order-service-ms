@@ -28,10 +28,10 @@ public class OrderController {
         return orderService.getOrder(orderId);
     }
 
-//    @GetMapping("/getreq")
-//    public String getOrderRequestParm(@RequestParam String orderId){
-//        log.info("Get Request for request param the orderId "+ orderId);
-//        return orderService.getOrder(orderId);
-//    }
+    @GetMapping("/getpayment")
+    public OrderResponseDTO getOrderRequestParm(){
+        log.info("Get Request for request param for payment");
+        return orderService.getOrder("1");
+    }
 
 }

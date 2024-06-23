@@ -33,7 +33,7 @@ public class OrderService {
     @Value("${order.producer.topic.name}")
     private String topicName;
 
-    private static final String PAYMENT_URL = "http://payment-service-ms/payments/";
+    private static final String PAYMENT_URL = "http://payment-service-ms-service.payment-service-ms-namespace.svc.cluster.local:9196/payments/";
     private static  final String USER_BASE_URL = "http://user-service-ms/users/";
 
     public String placeAnOrder(Order order){
@@ -55,8 +55,14 @@ public class OrderService {
       Order order =   orderRepository.findByOrderId(orderId);
 
       //Rest template to payment
+        System.out.println("Sending request to payment dto");
+
+
 
         PaymentDTO paymentDTO = restTemplate.getForObject(PAYMENT_URL+orderId, PaymentDTO.class);
+
+        System.out.println(paymentDTO.getAmount());
+
 
         UserDTO userDTO = restTemplate.getForObject(USER_BASE_URL+order.getUserId(), UserDTO.class);
 

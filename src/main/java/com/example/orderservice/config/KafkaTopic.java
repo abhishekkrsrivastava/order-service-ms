@@ -4,7 +4,7 @@ import com.example.orderservice.entity.Order;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
@@ -59,7 +59,6 @@ public class KafkaTopic  {
 //    }
 
     @Bean
-    @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
